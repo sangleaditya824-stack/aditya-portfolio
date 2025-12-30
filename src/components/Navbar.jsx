@@ -1,20 +1,31 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const [themeOpen, setThemeOpen] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     // Define 5 distinct themes
     const themes = [
-        { name: 'Gold', color: '#ffb74d', glow: 'rgba(255, 183, 77, 0.4)' },      // Current
-        { name: 'Neon Green', color: '#84cc16', glow: 'rgba(132, 204, 22, 0.4)' }, // Original
-        { name: 'Sky Blue', color: '#06b6d4', glow: 'rgba(6, 182, 212, 0.4)' },    // Cyan
-        { name: 'Purple', color: '#a855f7', glow: 'rgba(168, 85, 247, 0.4)' },     // Purple
-        { name: 'Rose', color: '#f43f5e', glow: 'rgba(244, 63, 94, 0.4)' },        // Red/Pink
+        { name: 'Black', color: '#ffffff', displayColor: '#000000', glow: 'rgba(255, 255, 255, 0.4)', textOnPrimary: '#000000' },     // Monochrome
+        { name: 'Neon Green', color: '#84cc16', glow: 'rgba(132, 204, 22, 0.4)', textOnPrimary: '#ffffff' }, // Original
+        { name: 'Sky Blue', color: '#06b6d4', glow: 'rgba(6, 182, 212, 0.4)', textOnPrimary: '#ffffff' },    // Cyan
+        { name: 'Purple', color: '#a855f7', glow: 'rgba(168, 85, 247, 0.4)', textOnPrimary: '#ffffff' },     // Purple
+        { name: 'Rose', color: '#f43f5e', glow: 'rgba(244, 63, 94, 0.4)', textOnPrimary: '#ffffff' },        // Red/Pink
     ];
 
     const [currentTheme, setCurrentTheme] = useState(themes[0]);
+
+    useEffect(() => {
+        // Enforce Black theme if current is Gold or invalid (legacy state cleanup)
+        const isThemeValid = themes.some(t => t.name === currentTheme.name);
+        if (currentTheme.name === 'Gold' || !isThemeValid) {
+            setCurrentTheme(themes[0]);
+        }
+    }, [currentTheme]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -30,21 +41,42 @@ const Navbar = () => {
         document.documentElement.style.setProperty('--color-primary', currentTheme.color);
         document.documentElement.style.setProperty('--primary-glow', currentTheme.glow);
         document.documentElement.style.setProperty('--color-primary-glow', currentTheme.glow);
+        document.documentElement.style.setProperty('--text-on-primary', currentTheme.textOnPrimary || '#ffffff');
     }, [currentTheme]);
 
     const navLinks = [
-        { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Skills', href: '#skills' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Home', path: '/' },
+        { name: 'About', path: '/#about' },
+        { name: 'Skills', path: '/#skills' },
+        { name: 'Contact', path: '/contact' },
     ];
 
-    const scrollToSection = (id) => {
-        const element = document.querySelector(id);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setMenuOpen(false);
+    const handleNavigation = (path) => {
+        if (path === '/contact') {
+            navigate('/contact');
+        } else {
+            if (location.pathname !== '/') {
+                navigate('/');
+                setTimeout(() => {
+                    const id = path.replace('/', '');
+                    if (id) {
+                        const element = document.querySelector(id);
+                        if (element) element.scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                }, 100);
+            } else {
+                const id = path.replace('/', '');
+                if (id) {
+                    const element = document.querySelector(id);
+                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
         }
+        setMenuOpen(false);
     };
 
     return (
@@ -52,7 +84,7 @@ const Navbar = () => {
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
                 {/* Logo */}
                 {/* Logo */}
-                <div onClick={() => scrollToSection('#home')} className="cursor-pointer w-12 h-12 flex items-center justify-center">
+                <div onClick={() => handleNavigation('/')} className="cursor-pointer w-12 h-12 flex items-center justify-center">
                     <svg viewBox="0 0 100 100" className="w-8 h-8" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <text x="35" y="75" fontSize="70" fontWeight="900" textAnchor="middle" fill="currentColor" className="text-white font-sans">A</text>
                         <text x="75" y="75" fontSize="70" fontWeight="900" textAnchor="middle" fill="currentColor" className="text-primary font-sans">S</text>
@@ -64,7 +96,7 @@ const Navbar = () => {
                     {navLinks.map((link) => (
                         <button
                             key={link.name}
-                            onClick={() => scrollToSection(link.href)}
+                            onClick={() => handleNavigation(link.path)}
                             className="text-gray-400 hover:text-white text-sm font-medium transition-colors"
                         >
                             {link.name}
@@ -72,7 +104,7 @@ const Navbar = () => {
                     ))}
 
                     <div className="flex items-center gap-4">
-                        <button onClick={() => scrollToSection('#contact')} className="px-5 py-2 border border-stone-700 rounded-full text-primary hover:bg-primary hover:text-black transition-all text-sm font-bold">
+                        <button onClick={() => handleNavigation('/contact')} className="px-5 py-2 border border-stone-700 rounded-full text-primary hover:bg-primary hover:text-black transition-all text-sm font-bold">
                             Hire Me
                         </button>
 
@@ -95,7 +127,7 @@ const Navbar = () => {
                                                 key={theme.name}
                                                 onClick={() => { setCurrentTheme(theme); setThemeOpen(false); }}
                                                 className={`w-6 h-6 rounded-full border border-gray-700 hover:scale-110 transition-transform ${currentTheme.name === theme.name ? 'ring-2 ring-white ring-offset-1 ring-offset-black' : ''}`}
-                                                style={{ backgroundColor: theme.color }}
+                                                style={{ backgroundColor: theme.displayColor || theme.color }}
                                                 title={theme.name}
                                             />
                                         ))}
@@ -121,7 +153,7 @@ const Navbar = () => {
                     {navLinks.map((link) => (
                         <button
                             key={link.name}
-                            onClick={() => scrollToSection(link.href)}
+                            onClick={() => handleNavigation(link.path)}
                             className="text-left text-gray-300 hover:text-primary text-base font-medium py-2"
                         >
                             {link.name}
@@ -136,12 +168,12 @@ const Navbar = () => {
                                     key={theme.name}
                                     onClick={() => setCurrentTheme(theme)}
                                     className={`w-6 h-6 rounded-full border border-gray-700 ${currentTheme.name === theme.name ? 'ring-2 ring-white ring-offset-1 ring-offset-black' : ''}`}
-                                    style={{ backgroundColor: theme.color }}
+                                    style={{ backgroundColor: theme.displayColor || theme.color }}
                                 />
                             ))}
                         </div>
                     </div>
-                    <button onClick={() => scrollToSection('#contact')} className="w-full text-center px-5 py-3 bg-primary text-black rounded-lg font-bold mt-4">
+                    <button onClick={() => handleNavigation('/contact')} className="w-full text-center px-5 py-3 bg-primary text-black rounded-lg font-bold mt-4">
                         Hire Me
                     </button>
                 </div>

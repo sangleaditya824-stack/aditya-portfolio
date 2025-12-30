@@ -91,10 +91,10 @@ const Skills = () => {
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-[#121212] p-8 rounded-2xl border border-gray-800 hover:border-primary/30 transition-all group hover:-translate-y-2 duration-300"
+                            className="bg-[#121212] p-8 rounded-2xl transition-all group duration-300"
                         >
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary group-hover:text-black transition-colors">
+                                <div className="p-3 bg-primary rounded-lg text-black">
                                     {category.icon}
                                 </div>
                                 <h3 className="text-xl font-bold">{category.title}</h3>
