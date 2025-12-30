@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import profileImg from '../assets/aditya.png';
 
@@ -38,7 +39,16 @@ const Hero = () => {
                         transition={{ duration: 0.5 }}
                         className="text-primary font-bold text-sm sm:text-base mb-4 tracking-[0.2em] uppercase"
                     >
-                       
+                        {"Frontend Developer".split('').map((char, index) => (
+                            <motion.span
+                                key={index}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.1, delay: index * 0.1 }}
+                            >
+                                {char}
+                            </motion.span>
+                        ))}
                     </motion.h2>
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
@@ -67,10 +77,10 @@ const Hero = () => {
                         transition={{ duration: 0.7, delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 mb-12"
                     >
-                        <a href="#contact" className="bg-primary !text-white text-center px-8 py-3.5 text-base font-bold rounded-lg shadow-[0_0_20px_var(--primary-glow)]" onClick={(e) => { e.preventDefault(); document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' }); }}>
+                        <Link to="/contact" className="bg-primary !text-black text-center px-8 py-3.5 text-base font-bold rounded-lg shadow-[0_0_20px_var(--primary-glow)]">
                             Let's Connect
-                        </a>
-                        <a href="#skills" className="px-8 py-3.5 border-2 border-gray-700 hover:border-primary hover:text-black hover:bg-primary rounded-lg font-bold text-white transition-all text-center text-base" onClick={(e) => { e.preventDefault(); document.querySelector('#skills').scrollIntoView({ behavior: 'smooth' }); }}>
+                        </Link>
+                        <a href="#skills" className="px-8 py-3.5 border-2 border-gray-700 rounded-lg font-bold text-white transition-all text-center text-base" onClick={(e) => { e.preventDefault(); document.querySelector('#skills').scrollIntoView({ behavior: 'smooth' }); }}>
                             My Skills
                         </a>
                     </motion.div>
