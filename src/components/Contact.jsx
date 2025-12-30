@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CONTACT_INFO } from '../constants/data';
 import { motion } from 'framer-motion';
 
 const Contact = () => {
@@ -22,13 +23,13 @@ const Contact = () => {
         }
 
         const text = `Hello Aditya, My name is ${formData.name}. Email: ${formData.email}. ${formData.message}`;
-        const mobileNumber = "918262815229";
+        const mobileNumber = CONTACT_INFO.phoneRaw;
 
         // WhatsApp URL
         const url = `https://api.whatsapp.com/send?phone=${mobileNumber}&text=${encodeURIComponent(text)}`;
 
-       
-        
+
+
         window.open(url, '_blank');
 
         // Optional: Reset form after opening
@@ -61,46 +62,46 @@ const Contact = () => {
                         viewport={{ once: true }}
                         className="space-y-4 md:space-y-6"
                     >
-                        <div className="bg-black p-6 md:p-8 rounded-2xl border border-white/10 hover:border-primary/20 transition-all">
+                        <div className="bg-black p-6 md:p-8 rounded-2xl transition-all">
                             <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8">Contact Information</h3>
 
                             <div className="space-y-6">
                                 {/* Email */}
                                 <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
+                                    <div className="p-3 bg-primary rounded-lg text-black shrink-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
                                     </div>
                                     <div className="overflow-hidden">
                                         <p className="text-sm text-gray-400">Email</p>
-                                        <p className="font-bold text-base md:text-lg break-words">sangleaditya824@gmail.com</p>
+                                        <p className="font-bold text-base md:text-lg break-words">{CONTACT_INFO.email}</p>
                                     </div>
                                 </div>
 
                                 {/* Phone */}
                                 <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
+                                    <div className="p-3 bg-primary rounded-lg text-black shrink-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" /></svg>
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-400">Phone</p>
-                                        <p className="font-bold text-base md:text-lg">+91 82628 15229</p>
+                                        <p className="font-bold text-base md:text-lg">{CONTACT_INFO.phone}</p>
                                     </div>
                                 </div>
 
                                 {/* Location */}
                                 <div className="flex items-start gap-4">
-                                    <div className="p-3 bg-primary/10 rounded-lg text-primary shrink-0">
+                                    <div className="p-3 bg-primary rounded-lg text-black shrink-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
                                     </div>
                                     <div>
                                         <p className="text-sm text-gray-400">Location</p>
-                                        <p className="font-bold text-base md:text-lg">Sangamner, Maharashtra, India</p>
+                                        <p className="font-bold text-base md:text-lg">{CONTACT_INFO.location}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="bg-black p-6 md:p-8 rounded-2xl border border-white/10 hover:border-primary/20 transition-all">
+                        <div className="bg-black p-6 md:p-8 rounded-2xl transition-all">
                             <h3 className="text-lg md:text-xl font-bold mb-2">Open for Opportunities</h3>
                             <p className="text-gray-400 text-sm">
                                 I'm currently looking for internship opportunities and freelance projects. If you have an interesting project or position, I'd love to hear about it!
@@ -114,7 +115,7 @@ const Contact = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
                         viewport={{ once: true }}
-                        className="bg-black p-6 md:p-8 rounded-2xl border border-white/10 relative hover:border-primary/20 transition-all"
+                        className="bg-black p-6 md:p-8 rounded-2xl relative transition-all"
                     >
                         <h3 className="text-xl md:text-2xl font-bold mb-6">Send a Message</h3>
 
@@ -129,7 +130,7 @@ const Contact = () => {
                                     placeholder="John Doe"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    className="w-full bg-[#111] border border-white/10 rounded-lg p-3 md:p-4 text-white focus:border-primary focus:outline-none transition-colors text-sm md:text-base placeholder:text-gray-600"
+                                    className="w-full bg-[#111] rounded-lg p-3 md:p-4 text-white focus:outline-none transition-colors text-sm md:text-base placeholder:text-gray-600"
                                 />
                             </div>
                             <div>
@@ -142,7 +143,7 @@ const Contact = () => {
                                     placeholder="john@example.com"
                                     value={formData.email}
                                     onChange={handleChange}
-                                    className="w-full bg-[#111] border border-white/10 rounded-lg p-3 md:p-4 text-white focus:border-primary focus:outline-none transition-colors text-sm md:text-base placeholder:text-gray-600"
+                                    className="w-full bg-[#111] rounded-lg p-3 md:p-4 text-white focus:outline-none transition-colors text-sm md:text-base placeholder:text-gray-600"
                                 />
                             </div>
                             <div>
@@ -161,7 +162,7 @@ const Contact = () => {
 
                             <button
                                 type="submit"
-                                className="w-full bg-primary text-black font-bold py-3 md:py-4 rounded-lg hover:bg-opacity-90 transition-all flex items-center justify-center gap-2 text-sm md:text-base"
+                                className="w-full bg-primary text-black font-bold py-3 md:py-4 rounded-lg transition-all flex items-center justify-center gap-2 text-sm md:text-base"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="22" y1="2" x2="11" y2="13" /><polygon points="22 2 15 22 11 13 2 9 22 2" /></svg>
                                 Send Message on WhatsApp
@@ -171,13 +172,13 @@ const Contact = () => {
                 </div>
 
                 {/* Footer Socials */}
-                <div className="mt-20 pt-8 border-t border-gray-800 flex justify-between items-center text-sm text-gray-500">
+                <div className="mt-20 pt-8 flex justify-between items-center text-sm text-gray-500">
                     <div className="font-bold text-primary text-lg">AS</div>
-                    <p>© 2025 Aditya Sangale. All rights reserved.</p>
+                    <p>© 2025 Aditya Sangale. All rights reserved. v1.1</p>
                     <div className="flex items-center gap-6">
                         <a href="#" className="hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg></a>
-                        <a href="https://github.com/aditya-sangale" className="hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg></a>
-                        <a href="https://linkedin.com/in/aditya-sangale" className="hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg></a>
+                        <a href={CONTACT_INFO.socials.github} className="hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" /></svg></a>
+                        <a href={CONTACT_INFO.socials.linkedin} className="hover:text-primary transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" /></svg></a>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
-import Contact from './components/Contact';
+import Projects from './components/Projects';
+import ContactPage from './pages/ContactPage';
 
 function App() {
   return (
@@ -12,10 +13,17 @@ function App() {
       <div className="bg-[#050505] min-h-screen text-white">
         <Navbar />
         <main>
-          <Hero />
-          <About />
-          <Skills />
-          <Contact />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Hero />
+                <About />
+                <Skills />
+                <Projects />
+              </>
+            } />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
         </main>
       </div>
     </Router>
