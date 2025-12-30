@@ -44,7 +44,7 @@ const Projects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className="bg-card rounded-2xl overflow-hidden border border-gray-800 hover:border-primary/50 transition-all hover:shadow-2xl hover:shadow-primary/10 group"
+                            className="bg-card rounded-2xl overflow-hidden transition-all group"
                         >
                             {/* Placeholder Project Image */}
                             <div className="h-40 sm:h-48 bg-gray-900 w-full relative overflow-hidden">
