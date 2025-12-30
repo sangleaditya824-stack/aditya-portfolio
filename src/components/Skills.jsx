@@ -94,7 +94,7 @@ const Skills = () => {
                             className="bg-[#121212] p-8 rounded-2xl transition-all group duration-300"
                         >
                             <div className="flex items-center gap-4 mb-6">
-                                <div className="p-3 bg-primary rounded-lg text-white">
+                                <div className="p-3 bg-primary rounded-lg text-black">
                                     {category.icon}
                                 </div>
                                 <h3 className="text-xl font-bold">{category.title}</h3>
