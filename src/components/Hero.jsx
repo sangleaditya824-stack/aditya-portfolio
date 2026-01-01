@@ -33,32 +33,61 @@ const Hero = () => {
             <div className="max-w-7xl w-full mx-auto relative z-10 grid md:grid-cols-2 gap-12 items-center">
                 {/* Left Column: Text Content */}
                 <div className="text-left order-2 md:order-1">
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="text-primary font-bold text-sm sm:text-base mb-4 tracking-[0.2em] uppercase"
-                    >
-                        {"Frontend Developer".split('').map((char, index) => (
-                            <motion.span
-                                key={index}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.1, delay: index * 0.1 }}
-                            >
-                                {char}
-                            </motion.span>
-                        ))}
-                    </motion.h2>
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.7, delay: 0.2 }}
-                        className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 leading-tight text-white font-heading tracking-tight"
+                        className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-6 leading-tight font-heading tracking-tight"
                     >
-                        Building Digital
+                        <span className="text-white">
+                            {"Building Digital".split('').map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0
+                                    }}
+                                    transition={{
+                                        duration: 0.3,
+                                        delay: 0.3 + (index * 0.05),
+                                        ease: "easeOut"
+                                    }}
+                                    className="inline-block"
+                                >
+                                    {char === ' ' ? '\u00A0' : char}
+                                </motion.span>
+                            ))}
+                        </span>
                         <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-purple-500 to-pink-500">Experiences</span>
+                        <span
+                            className="inline-block bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent"
+                            style={{
+                                backgroundSize: '200% auto',
+                                animation: 'gradientShimmer 3s linear infinite',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                            }}
+                        >
+                            {"Experiences".split('').map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0
+                                    }}
+                                    transition={{
+                                        duration: 0.3,
+                                        delay: 1 + (index * 0.05),
+                                        ease: "easeOut"
+                                    }}
+                                    className="inline-block"
+                                >
+                                    {char}
+                                </motion.span>
+                            ))}
+                        </span>
                     </motion.h1>
 
                     <motion.p
@@ -67,7 +96,18 @@ const Hero = () => {
                         transition={{ duration: 0.7, delay: 0.4 }}
                         className="text-gray-400 text-lg sm:text-xl mb-8 max-w-2xl leading-relaxed font-light"
                     >
-                        Passionate Frontend Developer with expertise in React.js and modern web technologies.
+                        Passionate Frontend Developer with expertise in React.js and modern web{' '}
+                        <span
+                            className="inline-block bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent font-bold"
+                            style={{
+                                backgroundSize: '200% auto',
+                                animation: 'gradientShimmer 3s linear infinite',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                            }}
+                        >
+                            technologies
+                        </span>.
                         I build accessible, pixel-perfect, and performant web experiences.
                     </motion.p>
 
@@ -78,10 +118,31 @@ const Hero = () => {
                         className="flex flex-col sm:flex-row gap-4 mb-12"
                     >
                         <Link to="/contact" className="bg-primary !text-black text-center px-8 py-3.5 text-base font-bold rounded-lg shadow-[0_0_20px_var(--primary-glow)]">
-                            Let's Connect
+                            Let's{' '}
+                            <span
+                                className="inline-block bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent"
+                                style={{
+                                    backgroundSize: '200% auto',
+                                    animation: 'gradientShimmer 2s linear infinite',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                }}
+                            >
+                                Connect
+                            </span>
                         </Link>
                         <a href="#skills" className="px-8 py-3.5 border-2 border-gray-700 rounded-lg font-bold text-white transition-all text-center text-base" onClick={(e) => { e.preventDefault(); document.querySelector('#skills').scrollIntoView({ behavior: 'smooth' }); }}>
-                            My Skills
+                            <span
+                                className="inline-block bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent"
+                                style={{
+                                    backgroundSize: '200% auto',
+                                    animation: 'gradientShimmer 3s linear infinite',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                }}
+                            >
+                                Know More
+                            </span>
                         </a>
                     </motion.div>
 
@@ -127,7 +188,41 @@ const Hero = () => {
                         className="mt-8 text-center"
                     >
                         <h2 className="text-3xl sm:text-4xl font-bold text-white font-heading">Aditya Sangale</h2>
-                        <p className="text-primary tracking-widest uppercase text-sm font-bold mt-2">Frontend Developer</p>
+                        <motion.div
+                            className="mt-2 overflow-hidden"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, delay: 0.8 }}
+                        >
+                            <p
+                                className="tracking-widest uppercase text-sm font-bold inline-block bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent"
+                                style={{
+                                    backgroundSize: '200% auto',
+                                    animation: 'gradientShimmer 3s linear infinite',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                }}
+                            >
+                                {"Frontend Developer".split('').map((char, index) => (
+                                    <motion.span
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{
+                                            opacity: 1,
+                                            y: 0
+                                        }}
+                                        transition={{
+                                            duration: 0.3,
+                                            delay: 1 + (index * 0.08),
+                                            ease: "easeOut"
+                                        }}
+                                        className="inline-block"
+                                    >
+                                        {char === ' ' ? '\u00A0' : char}
+                                    </motion.span>
+                                ))}
+                            </p>
+                        </motion.div>
                     </motion.div>
                 </div>
             </div>

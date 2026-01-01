@@ -29,7 +29,32 @@ const Projects = () => {
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-12 gap-4">
                     <div className="text-center sm:text-left">
                         <h4 className="text-primary font-bold uppercase tracking-widest text-xs sm:text-sm mb-2">My Portfolio</h4>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading text-white">Recent Work</h2>
+                        <h2
+                            className="text-3xl sm:text-4xl md:text-5xl font-bold font-heading inline-block bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent"
+                            style={{
+                                backgroundSize: '200% auto',
+                                animation: 'gradientShimmer 3s linear infinite',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                            }}
+                        >
+                            {"Recent Work".split('').map((char, index) => (
+                                <motion.span
+                                    key={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{
+                                        duration: 0.3,
+                                        delay: index * 0.05,
+                                        ease: "easeOut"
+                                    }}
+                                    className="inline-block"
+                                >
+                                    {char === ' ' ? '\u00A0' : char}
+                                </motion.span>
+                            ))}
+                        </h2>
                     </div>
                     <a href="https://github.com/aditya-sangale" target="_blank" rel="noreferrer" className="hidden sm:inline-block text-muted hover:text-primary transition-colors font-medium text-sm">
                         View GitHub &gt;
