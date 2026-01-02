@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { CONTACT_INFO } from '../constants/data';
 import profileImg from '../assets/aditya.png';
 
 const Hero = () => {
@@ -96,7 +97,7 @@ const Hero = () => {
                         transition={{ duration: 0.7, delay: 0.4 }}
                         className="text-gray-400 text-lg sm:text-xl mb-8 max-w-2xl leading-relaxed font-light"
                     >
-                        Passionate Frontend Developer with expertise in React.js and modern web{' '}
+                        Passionate Frontend Developer with experience in{' '}
                         <span
                             className="inline-block bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent font-bold"
                             style={{
@@ -106,9 +107,9 @@ const Hero = () => {
                                 WebkitTextFillColor: 'transparent',
                             }}
                         >
-                            technologies
+                           React.js and modern web technologies
                         </span>.
-                        I build accessible, pixel-perfect, and performant web experiences.
+                       I build accessible, pixel-perfect, and high-performance web applications, focusing on clean code, great user experience, and responsive design.
                     </motion.p>
 
                     <motion.div
@@ -128,7 +129,7 @@ const Hero = () => {
                                     WebkitTextFillColor: 'transparent',
                                 }}
                             >
-                                Connect
+                                Contact
                             </span>
                         </Link>
                         <a href="#skills" className="px-8 py-3.5 border-2 border-gray-700 rounded-lg font-bold text-white transition-all text-center text-base" onClick={(e) => { e.preventDefault(); document.querySelector('#skills').scrollIntoView({ behavior: 'smooth' }); }}>
@@ -172,7 +173,7 @@ const Hero = () => {
                     >
                         <div className="absolute -inset-1 bg-gradient-to-r from-primary to-[#ff00ff] rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
 
-                        <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-primary/50 transition-colors bg-[#121212] flex items-center justify-center">
+                        <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-gray-800 group-hover:border-primary/50 transition-colors bg-card flex items-center justify-center">
                             <img
                                 src={profilePic}
                                 alt="Profile"
@@ -223,6 +224,14 @@ const Hero = () => {
                                 ))}
                             </p>
                         </motion.div>
+
+                        <div className="flex items-center justify-center gap-2 mt-3 text-gray-500 text-sm">
+                            <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            {CONTACT_INFO.location}
+                        </div>
                     </motion.div>
                 </div>
             </div>

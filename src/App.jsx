@@ -10,7 +10,7 @@ import ContactPage from './pages/ContactPage';
 function App() {
   return (
     <Router>
-      <div className="bg-[#050505] min-h-screen text-white">
+      <div className="bg-background min-h-screen text-white">
         <Navbar />
         <main>
           <Routes>

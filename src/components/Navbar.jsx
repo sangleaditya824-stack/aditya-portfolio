@@ -80,7 +80,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#050505]/95 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-background/95 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'}`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center relative">
                 {/* Logo */}
                 {/* Logo */}
@@ -149,7 +149,7 @@ const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             {menuOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-[#050505] border-b border-gray-800 p-6 flex flex-col space-y-4 shadow-2xl h-screen">
+                <div className="md:hidden absolute top-full left-0 w-full bg-background border-b border-gray-800 p-6 flex flex-col space-y-4 shadow-2xl h-screen">
                     {navLinks.map((link) => (
                         <button
                             key={link.name}

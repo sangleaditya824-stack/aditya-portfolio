@@ -7,7 +7,7 @@ import Contact from '../components/Contact';
 
 const LandingPage = () => {
     return (
-        <div className="bg-[#050505] text-white font-body">
+        <div className="bg-background text-white font-body">
             {/* Each section takes full viewport height and uses scroll-snap for smooth navigation */}
             <section id="home" className="snap-start min-h-screen">
                 <Hero />

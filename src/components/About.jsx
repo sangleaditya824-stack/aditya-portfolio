@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const About = () => {
     return (
-        <section id="about" className="py-20 bg-[#050505] text-white">
+        <section id="about" className="py-20 bg-background text-white">
             <div className="max-w-7xl mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                         viewport={{ once: true }}
-                        className="bg-[#121212] p-8 rounded-2xl transition-all group"
+                        className="bg-card p-8 rounded-2xl transition-all group"
                     >
                         <div className="flex items-start gap-4">
                             <div className="p-3 bg-primary rounded-lg text-black">
@@ -48,7 +48,7 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                         viewport={{ once: true }}
-                        className="bg-[#121212] p-8 rounded-2xl transition-all group"
+                        className="bg-card p-8 rounded-2xl transition-all group"
                     >
                         <div className="flex items-start gap-4">
                             <div className="p-3 bg-primary rounded-lg text-black">
@@ -67,7 +67,7 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.3 }}
                         viewport={{ once: true }}
-                        className="bg-[#121212] p-8 rounded-2xl transition-all group"
+                        className="bg-card p-8 rounded-2xl transition-all group"
                     >
                         <div className="flex items-start gap-4">
                             <div className="p-3 bg-primary rounded-lg text-black">
@@ -86,7 +86,7 @@ const About = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.5, delay: 0.4 }}
                         viewport={{ once: true }}
-                        className="bg-[#121212] p-8 rounded-2xl transition-all group"
+                        className="bg-card p-8 rounded-2xl transition-all group"
                     >
                         <div className="flex items-start gap-4">
                             <div className="p-3 bg-primary rounded-lg text-black">

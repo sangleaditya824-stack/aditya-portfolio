@@ -11,7 +11,7 @@ const Experience = () => {
 
                 <div className="space-y-4 sm:space-y-6">
                     {/* Current Position */}
-                    <div className="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-all">
+                    <div className="bg-card p-6 sm:p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-all">
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                             <div>
                                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Frontend Developer</h3>
@@ -39,7 +39,7 @@ const Experience = () => {
                     </div>
 
                     {/* Project Experience */}
-                    <div className="bg-[#121212] p-6 sm:p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-all">
+                    <div className="bg-card p-6 sm:p-8 rounded-2xl border border-gray-800 hover:border-primary/50 transition-all">
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                             <div>
                                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">ERP System Frontend</h3>
@@ -70,7 +70,7 @@ const Experience = () => {
                 {/* Education */}
                 <div className="mt-8 sm:mt-12 pt-8 sm:pt-12 border-t border-gray-800">
                     <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 text-center md:text-left">Education</h3>
-                    <div className="bg-[#121212] p-5 sm:p-6 rounded-xl border border-gray-800">
+                    <div className="bg-card p-5 sm:p-6 rounded-xl border border-gray-800">
                         <div className="flex items-start gap-4">
                             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
                                 <span className="text-primary text-lg sm:text-xl">🎓</span>

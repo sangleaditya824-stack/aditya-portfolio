@@ -63,7 +63,7 @@ const Skills = () => {
     };
 
     return (
-        <section id="skills" className="py-20 bg-[#050505] text-white">
+        <section id="skills" className="py-20 bg-background text-white">
             <div className="max-w-7xl mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -91,7 +91,7 @@ const Skills = () => {
                         <motion.div
                             key={index}
                             variants={item}
-                            className="bg-[#121212] p-8 rounded-2xl transition-all group duration-300"
+                            className="bg-card p-8 rounded-2xl transition-all group duration-300"
                         >
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="p-3 bg-primary rounded-lg text-black">
